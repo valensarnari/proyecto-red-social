@@ -1,28 +1,43 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Services.DTOs.Users;
+using Services.UseCases.Users;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
     [Route("api/auth")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController(UserUseCases users) : ControllerBase
     {
         [HttpPost("register")]
-        public async Task<IActionResult> Register()
+        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
-            return Ok("");
+            var token = await users.Register.Execute(request);
+            return Ok(new { token });
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            return Ok("");
+            var token = await users.Login.Execute(request);
+            return Ok(new { token });
         }
 
+        [Authorize]
         [HttpGet("me")]
         public async Task<IActionResult> Me()
         {
-            return Ok("");
+            var userId = Guid.Parse(
+                User.FindFirstValue(ClaimTypes.NameIdentifier) ??
+                User.FindFirstValue(JwtRegisteredClaimNames.Sub)!
+            );
+
+            var user = await users.GetUser.Execute(userId);
+            return Ok(user);
         }
     }
 }

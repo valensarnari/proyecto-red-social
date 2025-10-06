@@ -33,3 +33,11 @@ C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\obj\Debu
 C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\obj\Debug\net8.0\API.pdb
 C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\obj\Debug\net8.0\ref\API.dll
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

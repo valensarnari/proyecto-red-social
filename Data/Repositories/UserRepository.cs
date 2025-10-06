@@ -19,6 +19,17 @@ namespace Data.Repositories
             _context = context;
         }
 
+        public async Task<User?> GetByUsername(string username)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user;
+        }
+
         // Incluye posts, reposts y replies de los usuarios que sigue (incluido el mismo), ordenados cronologicamente
         public async Task<IEnumerable<object>> GetFeed(Guid userId)
         {

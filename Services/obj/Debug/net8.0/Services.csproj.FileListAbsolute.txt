@@ -1,0 +1,5 @@
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\Services\obj\Debug\net8.0\Services.csproj.AssemblyReference.cache
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\Services\obj\Debug\net8.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\Services\obj\Debug\net8.0\Services.AssemblyInfoInputs.cache
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\Services\obj\Debug\net8.0\Services.AssemblyInfo.cs
+C:\Users\Valentin\OneDrive\Escritorio\Proyectos\proyecto-red-social\Services\obj\Debug\net8.0\Services.csproj.CoreCompileInputs.cache

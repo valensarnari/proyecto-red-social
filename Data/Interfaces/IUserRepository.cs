@@ -9,6 +9,7 @@ namespace Data.Interfaces
 {
     public interface IUserRepository : IBaseRepository<User>
     {
+        Task<User?> GetByUsername(string username);
         Task<IEnumerable<object>> GetFeed(Guid userId); // Incluye posts, reposts y replies de los usuarios que sigue, ordenados cronologicamente
         Task<IEnumerable<User>> GetFollowers(Guid userId);
         Task<IEnumerable<User>> GetFollowing(Guid userId);

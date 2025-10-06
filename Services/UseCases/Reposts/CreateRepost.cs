@@ -25,8 +25,8 @@ namespace Services.UseCases.Reposts
 
             if (post == null || user == null)
             {
-                return false;
-                // throw new KeyNotFoundException("Post or User not found.");
+                // return false;
+                throw new KeyNotFoundException("Post or User not found.");
             }
 
             await _unitOfWork.Reposts.CreateAsync(request.ToEntity());

@@ -16,13 +16,18 @@ namespace Services.UseCases.Reposts
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<bool> Execute(Guid repostId)
+        public async Task<bool> Execute(Guid repostId, Guid userId)
         {
             var repost = await _unitOfWork.Reposts.GetByIdAsync(repostId);
             if (repost == null)
             {
-                return false;
-                // throw new KeyNotFoundException("Repost not found.");
+                // return false;
+                throw new KeyNotFoundException("Repost not found.");
+            }
+
+            if (repost.UserId != userId)
+            {
+                throw new InvalidOperationException("This user cannot delete the repost.");
             }
 
             await _unitOfWork.Reposts.DeleteAsync(repostId);
