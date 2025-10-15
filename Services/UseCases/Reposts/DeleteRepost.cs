@@ -27,9 +27,13 @@ namespace Services.UseCases.Reposts
 
             if (repost.UserId != userId)
             {
+                // return false;
                 throw new InvalidOperationException("This user cannot delete the repost.");
             }
 
+            var post = await _unitOfWork.Posts.GetByIdAsync(repost.PostId);
+            post.TotalReposts--;
+            await _unitOfWork.Posts.UpdateAsync(post);
             await _unitOfWork.Reposts.DeleteAsync(repostId);
             await _unitOfWork.SaveChangesAsync();
             return true;

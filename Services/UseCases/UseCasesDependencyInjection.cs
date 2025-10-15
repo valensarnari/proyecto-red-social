@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Services.UseCases.Posts;
 using Services.UseCases.Reposts;
 using Services.UseCases.Users;
 using System;
@@ -14,7 +15,8 @@ namespace Services.UseCases
         public static IServiceCollection AddUseCases(this IServiceCollection services)
         => services
             .AddRepostUseCases()
-            .AddUserUseCases();
+            .AddUserUseCases()
+            .AddPostUseCases();
 
         private static IServiceCollection AddRepostUseCases(this IServiceCollection services)
             => services.AddScoped<RepostUseCases>()
@@ -26,5 +28,15 @@ namespace Services.UseCases
                 .AddScoped<Login>()
                 .AddScoped<Register>()
                 .AddScoped<GetUser>();
+
+        private static IServiceCollection AddPostUseCases(this IServiceCollection services)
+            => services.AddScoped<PostUseCases>()
+                .AddScoped<DeletePost>()
+                .AddScoped<CreatePost>()
+                .AddScoped<GetPost>()
+                .AddScoped<GetTimeline>()
+                .AddScoped<GetReplies>()
+                .AddScoped<CreateReply>()
+                .AddScoped<CreateQuote>();
     }
 }

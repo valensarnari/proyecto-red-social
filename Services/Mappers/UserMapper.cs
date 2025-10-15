@@ -24,5 +24,16 @@ namespace Services.Mappers
                 FollowingCount = user.Following.Count()
             };
         }
+
+        public static UserSummaryDto ToSummaryDto(this User user)
+        {
+            return new UserSummaryDto
+            {
+                Id = user.Id,
+                Username = user.Username,
+                DisplayName = user.DisplayName,
+                ProfileImageUrl = user.ProfileImageUrl
+            };
+        }
     }
 }

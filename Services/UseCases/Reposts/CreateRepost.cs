@@ -1,4 +1,5 @@
 ﻿using Data;
+using Models.Entities;
 using Services.DTOs.Reposts;
 using Services.Mappers;
 using System;
@@ -29,6 +30,14 @@ namespace Services.UseCases.Reposts
                 throw new KeyNotFoundException("Post or User not found.");
             }
 
+            if (await _unitOfWork.Reposts.Exists(request.UserId, request.PostId))
+            {
+                // return false;
+                throw new InvalidOperationException("Repost already exists.");
+            }
+
+            post.TotalReposts++;
+            await _unitOfWork.Posts.UpdateAsync(post);
             await _unitOfWork.Reposts.CreateAsync(request.ToEntity());
             await _unitOfWork.SaveChangesAsync();
             return true;
