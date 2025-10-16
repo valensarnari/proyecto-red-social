@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Services.UseCases.Likes;
 using Services.UseCases.Posts;
 using Services.UseCases.Reposts;
 using Services.UseCases.Users;
@@ -16,12 +17,14 @@ namespace Services.UseCases
         => services
             .AddRepostUseCases()
             .AddUserUseCases()
-            .AddPostUseCases();
+            .AddPostUseCases()
+            .AddLikeUseCases();
 
         private static IServiceCollection AddRepostUseCases(this IServiceCollection services)
             => services.AddScoped<RepostUseCases>()
                 .AddScoped<CreateRepost>()
-                .AddScoped<DeleteRepost>();
+                .AddScoped<DeleteRepost>()
+                .AddScoped<GetRepostsByPost>();
 
         private static IServiceCollection AddUserUseCases(this IServiceCollection services)
             => services.AddScoped<UserUseCases>()
@@ -38,5 +41,12 @@ namespace Services.UseCases
                 .AddScoped<GetReplies>()
                 .AddScoped<CreateReply>()
                 .AddScoped<CreateQuote>();
+
+        private static IServiceCollection AddLikeUseCases(this IServiceCollection services)
+            => services.AddScoped<LikeUseCases>()
+                .AddScoped<CreateLike>()
+                .AddScoped<DeleteLike>()
+                .AddScoped<GetLikesByPost>()
+                .AddScoped<GetLikesByUser>();
     }
 }

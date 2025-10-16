@@ -1,20 +1,18 @@
 ﻿using Data;
 using Models.Entities;
-using Services.DTOs.Reposts;
-using Services.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.UseCases.Reposts
+namespace Services.UseCases.Likes
 {
-    public class CreateRepost
+    public class CreateLike
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public CreateRepost(IUnitOfWork unitOfWork)
+        public CreateLike(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -30,15 +28,15 @@ namespace Services.UseCases.Reposts
                 throw new KeyNotFoundException("Post or User not found.");
             }
 
-            if (await _unitOfWork.Reposts.Exists(userId, postId))
+            if (await _unitOfWork.Likes.Exists(userId, postId))
             {
                 // return false;
-                throw new InvalidOperationException("Repost already exists.");
+                throw new InvalidOperationException("Like already exists.");
             }
 
-            post.TotalReposts++;
+            post.TotalLikes++;
             await _unitOfWork.Posts.UpdateAsync(post);
-            await _unitOfWork.Reposts.CreateAsync(new Repost { PostId = postId, UserId = userId});
+            await _unitOfWork.Likes.CreateAsync(new Like { PostId = postId, UserId = userId });
             await _unitOfWork.SaveChangesAsync();
             return true;
         }

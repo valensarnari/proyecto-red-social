@@ -4,6 +4,7 @@ using Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,5 +29,8 @@ namespace Data.Repositories
 
             return true;
         }
+
+        public async Task<IEnumerable<Repost>> GetByPost(Guid postId)
+            => await _context.Reposts.Where(r => r.PostId == postId).OrderByDescending(r => r.SharedOn).ToListAsync();
     }
 }

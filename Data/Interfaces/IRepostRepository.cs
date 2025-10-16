@@ -10,5 +10,6 @@ namespace Data.Interfaces
     public interface IRepostRepository : IBaseRepository<Repost>
     {
         Task<bool> Exists(Guid userId, Guid postId);
+        Task<IEnumerable<Repost>> GetByPost(Guid postId);
     }
 }

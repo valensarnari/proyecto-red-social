@@ -3,7 +3,6 @@ using Services.DTOs.Reposts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,12 +10,14 @@ namespace Services.Mappers
 {
     public static class RepostMapper
     {
-        public static Repost ToEntity(this CreateRepostRequest request)
+        public static RepostDto ToDto(this Repost repost)
         {
-            return new Repost
+            return new RepostDto
             {
-                PostId = request.PostId,
-                UserId = request.UserId,
+                Id = repost.Id,
+                Post = repost.Post.ToSummaryDto(),
+                User = repost.User.ToSummaryDto(),
+                SharedOn = repost.SharedOn
             };
         }
     }

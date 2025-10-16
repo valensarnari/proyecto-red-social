@@ -9,5 +9,8 @@ namespace Data.Interfaces
 {
     public interface ILikeRepository : IBaseRepository<Like>
     {
+        Task<bool> Exists(Guid userId, Guid postId);
+        Task<IEnumerable<Like>> GetByUser(Guid userId);
+        Task<IEnumerable<Like>> GetByPost(Guid postId);
     }
 }
