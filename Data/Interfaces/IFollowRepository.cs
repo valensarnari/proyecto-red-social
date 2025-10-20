@@ -9,5 +9,8 @@ namespace Data.Interfaces
 {
     public interface IFollowRepository : IBaseRepository<Follow>
     {
+        Task<bool> Exists(Guid followerId, Guid followedId);
+        Task<IEnumerable<Follow>> GetFollowingByUser(Guid userId);
+        Task<IEnumerable<Follow>> GetFollowersByUser(Guid userId);
     }
 }

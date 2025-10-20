@@ -11,8 +11,8 @@ namespace Services.UseCases.Posts
         CreatePost CreatePost,
         DeletePost DeletePost,
         GetPost GetPost,
-        GetTimeline GetTimeline,
-        GetReplies GetReplies,
+        GetUserTimeline GetTimeline,
+        GetPostReplies GetReplies,
         CreateReply CreateReply,
         CreateQuote CreateQuote
     );

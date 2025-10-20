@@ -1,6 +1,5 @@
 ﻿using Data;
-using Models.Entities;
-using Services.DTOs.Posts;
+using Services.DTOs.Follows;
 using Services.Mappers;
 using System;
 using System.Collections.Generic;
@@ -8,29 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.UseCases.Posts
+namespace Services.UseCases.Follows
 {
-    public class GetTimeline
+    public class GetFollowers
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public GetTimeline(IUnitOfWork unitOfWork)
+        public GetFollowers(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<PostDto>> Execute(Guid userId)
+        public async Task<IEnumerable<FollowDto>> Execute(Guid userId)
         {
             var user = await _unitOfWork.Users.GetByIdAsync(userId);
             if (user == null)
             {
-                // return null;
                 throw new KeyNotFoundException("User not found.");
             }
 
-            var timeline = await _unitOfWork.Users.GetPosts(userId);
-            var postDtos = timeline.Cast<Post>().Select(PostMapper.ToDto).ToList();
-            return postDtos;
+            var followers = await _unitOfWork.Follows.GetFollowersByUser(userId);
+            return followers.Select(f => f.ToDto());
         }
     }
 }

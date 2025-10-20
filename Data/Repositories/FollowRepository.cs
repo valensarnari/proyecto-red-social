@@ -1,4 +1,5 @@
 ﻿using Data.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Models.Entities;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,22 @@ namespace Data.Repositories
         {
             _context = context;
         }
+
+        public async Task<bool> Exists(Guid followerId, Guid followedId)
+        {
+            var follow = await _context.Follows.FirstOrDefaultAsync(f => f.FollowerId == followerId && f.FollowedId == followedId);
+            if (follow == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public async Task<IEnumerable<Follow>> GetFollowersByUser(Guid userId)
+            => await _context.Follows.Where(f => f.FollowedId == userId).ToListAsync();
+
+        public async Task<IEnumerable<Follow>> GetFollowingByUser(Guid userId)
+            => await _context.Follows.Where(f => f.FollowerId == userId).ToListAsync();
     }
 }

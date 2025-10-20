@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Services.UseCases.Follows;
 using Services.UseCases.Likes;
 using Services.UseCases.Posts;
 using Services.UseCases.Reposts;
@@ -14,11 +15,12 @@ namespace Services.UseCases
     public static class UseCasesDependencyInjection
     {
         public static IServiceCollection AddUseCases(this IServiceCollection services)
-        => services
-            .AddRepostUseCases()
-            .AddUserUseCases()
-            .AddPostUseCases()
-            .AddLikeUseCases();
+            => services
+                .AddRepostUseCases()
+                .AddUserUseCases()
+                .AddPostUseCases()
+                .AddLikeUseCases()
+                .AddFollowUseCases();
 
         private static IServiceCollection AddRepostUseCases(this IServiceCollection services)
             => services.AddScoped<RepostUseCases>()
@@ -37,8 +39,8 @@ namespace Services.UseCases
                 .AddScoped<DeletePost>()
                 .AddScoped<CreatePost>()
                 .AddScoped<GetPost>()
-                .AddScoped<GetTimeline>()
-                .AddScoped<GetReplies>()
+                .AddScoped<GetUserTimeline>()
+                .AddScoped<GetPostReplies>()
                 .AddScoped<CreateReply>()
                 .AddScoped<CreateQuote>();
 
@@ -48,5 +50,12 @@ namespace Services.UseCases
                 .AddScoped<DeleteLike>()
                 .AddScoped<GetLikesByPost>()
                 .AddScoped<GetLikesByUser>();
+
+        private static IServiceCollection AddFollowUseCases(this IServiceCollection services)
+            => services.AddScoped<FollowUseCases>()
+                .AddScoped<CreateFollow>()
+                .AddScoped<DeleteFollow>()
+                .AddScoped<GetFollowers>()
+                .AddScoped<GetFollowing>();
     }
 }

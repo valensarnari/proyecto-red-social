@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Services.UseCases.Posts
 {
-    public class GetReplies
+    public class GetPostReplies
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public GetReplies(IUnitOfWork unitOfWork)
+        public GetPostReplies(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
