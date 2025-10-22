@@ -1,6 +1,5 @@
 ﻿using Data.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
 using Models.Entities;
 using System;
 using System.Collections.Generic;

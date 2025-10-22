@@ -32,7 +32,8 @@ namespace Services.UseCases
             => services.AddScoped<UserUseCases>()
                 .AddScoped<Login>()
                 .AddScoped<Register>()
-                .AddScoped<GetUser>();
+                .AddScoped<GetUser>()
+                .AddScoped<JwtService>();
 
         private static IServiceCollection AddPostUseCases(this IServiceCollection services)
             => services.AddScoped<PostUseCases>()
