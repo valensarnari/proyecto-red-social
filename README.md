@@ -118,6 +118,8 @@ Incluye autenticación **JWT**, validación con **FluentValidation**, y endpoint
 Luego abrí tu navegador o Postman en:
 - https://localhost:5001/swagger (si tenés Swagger habilitado).
 
+---
+
 ## 👨‍💻 Autor
 - Valentín Sarnari
 - 🧠 Desarrollador Backend .NET
